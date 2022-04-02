@@ -27,7 +27,7 @@ namespace Infrastructure
                return await _context.Products
                  .Include(p=>p.ProductBrand) // posto je eager loading da bi se ukljucila polja iz drugih tabela
                  .Include(p=>p.ProductType)
-                 .SingleOrDefaultAsync(p=>p.Id==id);
+                 .SingleOrDefaultAsync(p=>p.Id==id); //mora firstordefault ili singleordefault zbog dodatnih polja da se ne bi bunilo jer find all ne podrzava include
         }
 
         public async Task<ProductBrand> GetProductBrandByIdAsync(int id)
